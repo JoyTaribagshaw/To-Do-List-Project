@@ -1,4 +1,4 @@
-import './style.css'
+import './style.css';
 
 const taskListContainer = document.querySelector('.list-container');
 
@@ -17,8 +17,8 @@ const myToDoList = [
     description: 'read javascript',
     completed: false,
     index: 3,
-  }
-]
+  },
+];
 
 const populateToDoList = () => {
   myToDoList.forEach((myToDoLists) => {
@@ -32,6 +32,5 @@ const populateToDoList = () => {
     taskListContainer.insertAdjacentHTML('beforeend', li);
   });
 };
-
 
 window.addEventListener('DOMContentLoaded', populateToDoList);
