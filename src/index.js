@@ -3,6 +3,7 @@ import Storage from './local_Storage.js';
 
 const taskListContainer = document.querySelector('.list-container');
 const form = document.querySelector('.input-form');
+const clearBtn = document.querySelector('.clear-btn');
 class Tasks extends Storage {
   constructor() {
     super();
@@ -15,8 +16,8 @@ class Tasks extends Storage {
       const listElement = `<li class="list-item">
       <div class="list-div">
         <div class="desc-flex">
-          <input type="checkbox" class="check" name="" id="">
-          <p class="desc">${myToDoLists.description}</p>
+          <input type="checkbox" class="check" name="" id=${myToDoLists.index}  ${myToDoLists.completed ? 'checked' : ''}>
+          <p class="desc ${myToDoLists.completed && 'strike--through'}">${myToDoLists.description}</p>
         </div>
         <form class="edit-form">
         <input type="text" name="" id="" class="edit--input">
@@ -34,6 +35,7 @@ class Tasks extends Storage {
     const verticalIcons = taskListContainer.querySelectorAll(
       '.fa-ellipsis-vertical',
     );
+    const checkBoxes = taskListContainer.querySelectorAll('.check');
 
     verticalIcons.forEach((icon) => {
       icon.addEventListener('click', (e) => {
@@ -61,6 +63,16 @@ class Tasks extends Storage {
         this.removeTask(Trash);
         this.updateTaskIndex();
         this.populateToDoList();
+        this.setLocalStorage(this.myToDoList);
+      });
+    });
+    checkBoxes.forEach((checkBox) => {
+      checkBox.addEventListener('change', (e) => {
+        const { id } = e.target;
+        const parent = e.target.parentElement.parentElement;
+        const pTag = parent.querySelector('.desc');
+        pTag.classList.toggle('strike--through');
+        this.updateCompletionStatus(+id);
         this.setLocalStorage(this.myToDoList);
       });
     });
@@ -92,6 +104,19 @@ class Tasks extends Storage {
     });
   };
 
+  updateCompletionStatus = (index) => {
+    this.myToDoList = this.myToDoList.map((list) => {
+      if (list.index === index) {
+        list.completed = !list.completed;
+      }
+      return list;
+    });
+  };
+
+  clearAllCompletedTasks = () => {
+    this.myToDoList = this.myToDoList.filter((list) => !list.completed);
+  };
+
   addTaskToUI = () => {
     form.addEventListener('submit', (e) => {
       const inputList = document.querySelector('.input-list');
@@ -105,6 +130,14 @@ class Tasks extends Storage {
       }
     });
   };
+
+  clearCompletedTasksFromUI = () => {
+    clearBtn.addEventListener('click', () => {
+      this.clearAllCompletedTasks();
+      this.setLocalStorage();
+      this.populateToDoList();
+    });
+  }
 }
 
 const task = new Tasks();
@@ -113,4 +146,5 @@ window.addEventListener('DOMContentLoaded', () => {
   task.setLocalStorage(task.myToDoList);
   task.populateToDoList();
   task.addTaskToUI();
+  task.clearCompletedTasksFromUI();
 });
