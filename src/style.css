@@ -52,6 +52,7 @@ form input {
 .list-item {
   display: flex;
   justify-content: space-between;
+  position: relative;
   align-items: center;
   border-top: 1px solid rgba(128, 128, 128, 0.41);
   padding: 15px 10px;
@@ -80,10 +81,12 @@ i.fa-solid {
   color: gray;
   cursor: pointer;
   font-size: 14px;
+  margin-left: auto;
 }
 
 .check {
   cursor: pointer;
+  text-decoration: line-through;
 }
 
 .clear-btn {
@@ -98,3 +101,56 @@ i.fa-solid {
 .list-container {
   display: grid;
 }
+
+
+
+
+
+.list-item input[type='text'] {
+  width: 100%;
+  border: none;
+  height: 100%;
+  outline: none;
+  display: none;
+}
+
+.list-item .desc {
+  width: 100%;
+}
+
+.list-item .list-div {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  width: 100%;
+}
+
+.list-item > i {
+  cursor: all-scroll;
+}
+
+
+.list-item .fa-trash-can {
+  display: none;
+} 
+
+.list-item.hide--desc p {
+  display: none;
+}
+
+.list-item.hide--desc {
+  background-color: rgba(255, 166, 0, 0.367);
+}
+
+.list-item.hide--desc input[type='text'] {
+  display: block;
+  background-color: inherit;
+}
+
+.list-item.hide--desc .fa-trash-can {
+  display: block;
+}
+
+.list-item.hide--desc .fa-ellipsis-vertical {
+  display: none;
+} 
