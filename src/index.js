@@ -1,36 +1,52 @@
 import './style.css';
 
 const taskListContainer = document.querySelector('.list-container');
-
-const myToDoList = [
-  {
-    description: 'wash my hair',
-    completed: false,
-    index: 1,
-  },
-  {
-    description: 'complete To Do list project',
-    completed: false,
-    index: 2,
-  },
-  {
-    description: 'read javascript',
-    completed: false,
-    index: 3,
-  },
-];
-
-const populateToDoList = () => {
-  myToDoList.forEach((myToDoLists) => {
-    const li = `<li class="list-item">
-        <div class="list-div">
-            <input type="checkbox" class="check" name="" id="">
-            <p>${myToDoLists.description}</p>
+const form = document.querySelector('.input-form')
+class Tasks {
+  constructor() {
+    this.myToDoList = [];
+  }
+  populateToDoList = () => {
+    taskListContainer.innerHTML = '';
+    this.myToDoList.forEach((myToDoLists) => {
+      const li = `<li class="list-item">
+          <div class="list-div">
+  
+              <input type="checkbox" class="check" name="" id="">
+              <p>${myToDoLists.description}</p>
+                <input type="text" name="" id="" class="edit--input">
+          </div>
+          </div>
+          <div class="second-list-div">
+          <i class="fa-solid fa-ellipsis-vertical" data--option=${myToDoLists.index}></i>
+          <i class="fa-solid fa-trash-can" data--trash=${myToDoLists.index}></i>
         </div>
-        <i class="fa-solid fa-ellipsis-vertical"></i>
-    </li>`;
-    taskListContainer.insertAdjacentHTML('beforeend', li);
-  });
-};
+      </li>`;
+      taskListContainer.insertAdjacentHTML('beforeend', li);
+    });
+  }
+  addTask = (description, completed = false) => {
+    const index = this.myToDoList.length + 1;
+    const newTask = {description, completed, index}
+    this.myToDoList = [...this.myToDoList, newTask];
+  }
+  addTaskToUI = () => {
+    form.addEventListener('submit', (e) => {
+      const inputList = document.querySelector('.input-list');
+      e.preventDefault();
+      const {value} = inputList;
+      if (value) {
+        this.addTask (value);
+        this.populateToDoList();
+        inputList.value = '';
+      }
+    })
+  }
+}
 
-window.addEventListener('DOMContentLoaded', populateToDoList);
+const task = new Tasks();
+
+window.addEventListener('DOMContentLoaded', () => {
+  task.populateToDoList();
+  task.addTaskToUI();
+});
