@@ -1,8 +1,9 @@
-class Storage {
- setLocalStorage = (tasks) => {
-   localStorage.setItem('tasks', JSON.stringify(tasks));
- }
+/* eslint-disable import/no-cycle */
+import { tasks } from './add_and_remove.js';
 
- getLocalStorage = () => (localStorage.getItem('tasks') ? JSON.parse(localStorage.getItem('tasks')) : []);
-}
-export default Storage;
+const addToLocalStorage = () => {
+  localStorage.setItem('task', JSON.stringify(tasks));
+};
+const getLocalStorage = () => (localStorage.getItem('task') ? JSON.parse(localStorage.getItem('task')) : []);
+
+export { addToLocalStorage, getLocalStorage };

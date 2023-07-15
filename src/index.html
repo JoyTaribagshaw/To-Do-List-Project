@@ -1,42 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>To-do List Project</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-    />
-  </head>
-  <body>  
-    <div class="main-container">
-      <header>
-        <h1>Today's To Do</h1>
-        <i class="fa-solid fa-arrows-rotate"></i>
-      </header>
-      <form action="" class="input-form">
-        <input
-          type="text"
-          name="list"
-          id="list"
-          class="input-list"
-          placeholder="Add to your list..."
-        />
-        <i class="fa-solid fa-arrow-turn-down fa-rotate-270 fa-sm"></i>
-      </form>
-      <ul class="list-container">
-        <!-- <li class="list-item">
-          <div class="list-div">
-              <input type="checkbox" class="check" name="" id="">
-              <p>${myToDoLists.description}</p>
-                <input type="text" name="" id="" class="edit--input">
-                <i class="fa-solid fa-ellipsis-vertical" data--option=${myToDoLists.index}></i> -->
-          <!-- </div> -->
-      <!-- </li> -->
-      </ul>
-      <button class="clear-btn" type="button">Clear all completed</button>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Today's To Do</h1>
+            <i class="fa-solid fa-arrows-rotate"></i>
+        </header>
+        <form action="" class="todo--form">
+          <input type="text" name="list" id="list" placeholder="Add to your list...">
+          <i class="fa-solid fa-arrow-turn-down fa-rotate-90"></i>
+        </form>
+        <ul class="list--container">
+        </ul>
+        <button class="clear--btn" type="button">Clear all completed</button>
     </div>
-
-  </body>
+</body>
 </html>
