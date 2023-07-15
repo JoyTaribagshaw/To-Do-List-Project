@@ -6,4 +6,4 @@ const addToLocalStorage = () => {
 };
 const getLocalStorage = () => (localStorage.getItem('task') ? JSON.parse(localStorage.getItem('task')) : []);
 
-export { addToLocalStorage, getLocalStorage };
+export { addToLocalStorage, getLocalStorage }
