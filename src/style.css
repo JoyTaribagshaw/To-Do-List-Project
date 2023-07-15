@@ -102,9 +102,18 @@ i.fa-solid {
   display: grid;
 }
 
+.edit-form {
+  display: none;
+  margin-top: 0;
+  border-top: none;
+  border-bottom: none;
+}
 
-
-
+.desc-flex {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
 
 .list-item input[type='text'] {
   width: 100%;
@@ -129,10 +138,9 @@ i.fa-solid {
   cursor: all-scroll;
 }
 
-
 .list-item .fa-trash-can {
   display: none;
-} 
+}
 
 .list-item.hide--desc p {
   display: none;
@@ -140,6 +148,7 @@ i.fa-solid {
 
 .list-item.hide--desc {
   background-color: rgba(255, 166, 0, 0.367);
+  padding: 0 16px;
 }
 
 .list-item.hide--desc input[type='text'] {
@@ -153,4 +162,8 @@ i.fa-solid {
 
 .list-item.hide--desc .fa-ellipsis-vertical {
   display: none;
-} 
+}
+
+.list-item.hide--desc .edit-form {
+  display: block;
+}
