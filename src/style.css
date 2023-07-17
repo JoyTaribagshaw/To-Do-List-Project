@@ -167,3 +167,9 @@ i.fa-solid {
 .list-item.hide--desc .edit-form {
   display: block;
 }
+
+.strike--through {
+  text-decoration: line-through;
+  color: gray;
+  opacity: 0.7;
+}
