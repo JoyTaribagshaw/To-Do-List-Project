@@ -70,7 +70,7 @@ Clone this repository to your desired folder:
 
 ```sh
   cd my-folder
-  git clone https://github.com/Akorede3133/To-Do-List-webpack.git
+  git clone https://joytaribagshaw.github.io/To-Do-List-Project/
 ```
 
 ### Usage
